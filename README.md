@@ -6,7 +6,7 @@ step 1: install npm i express
 
 step 2: open terminal with mongod
 
-step 3: npm i mongodb
+step 3: npm i mongodb, npm i mongoose, npm i body-parser
 
 step 4: open another terminal to run mongo
 
