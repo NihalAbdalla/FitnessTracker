@@ -16,8 +16,18 @@ db.on("error", error => {
   console.log("Database Error:", error);
 });
 
+app.post("/submit", ({ body }, res) => {
+  db.workout.save(workout, (error, saved) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.send(saved);
+    }
+  });
+});
+
 app.get("/", (req, res) => {
-  res.sendFile("Hello world"); 
+  res.sendFile(""); 
 });
 
 app.get("/all", (req, res) => {
@@ -28,21 +38,6 @@ app.get("/all", (req, res) => {
       res.json(found);
     }
   });
-});
-
-app.get("/find/:id", (req, res) => {
-  db.workout.findOne(
-    {
-      _id: mongojs.ObjectId(req.params.id)
-    },
-    (error, data) => {
-      if (error) {
-        res.send(error);
-      } else {
-        res.send(data);
-      }
-    }
-  );
 });
 
 app.listen(3000, () => {
