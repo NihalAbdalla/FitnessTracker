@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const mongojs = require("mongojs");
+const mongoose = require('mongoose');
+const par
 const path = require("path");
 
 const databaseUrl = "fitness";
