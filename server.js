@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
-const par
+const bodyParser = require("body-parser");
 const path = require("path");
 
 const databaseUrl = "fitness";
@@ -12,6 +12,9 @@ const db = mongojs(databaseUrl, collections);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended: true}));
+
+mongoose.connect("mondogdb://localhost:3000/workoutDB",{useNewUrlParser: true, useUnifiedTopology: true,}); 
 
 db.on("error", error => {
   console.log("Database Error:", error);
